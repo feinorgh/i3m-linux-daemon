@@ -1,0 +1,9 @@
+[Unit]
+Description=AirTop Front Panel Daemon
+
+[Service]
+Type=forking
+ExecStart=/opt/i3m-linux-daemon/bin/airtop-fpsvc
+
+[Install]
+WantedBy=multi-user.target

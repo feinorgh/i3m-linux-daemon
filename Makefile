@@ -24,9 +24,9 @@ AUTO_GENERATED_FILE = auto_generated.h
 NVMLDIR = nvml
 
 OBJS    = $(SOURCES:%.c=$(OBJDIR)/%.o)
-CFLAGS  = -Wall -I$(NVMLDIR) -Wno-format-truncation
+CFLAGS  = -Wall -I$(NVMLDIR) -Wno-format-truncation -Wextra -pedantic
 LFLAGS  = -Wall -rdynamic
-LLIBS   = -lsensors -lpthread -lm -ldl -latasmart
+LLIBS   = -lsensors -lpthread -lm -ldl -latasmart -li2c
 COMPILE_CMD = gcc $(CFLAGS)
 STRIP_CMD   = strip
 LINK_CMD    = gcc $(LFLAGS)
@@ -37,7 +37,7 @@ ifdef debug
 	CFLAGS += -g
 	STRIP_CMD = @\#
 else
-	CFLAGS += -O2
+	CFLAGS += -O2 -pipe
 endif
 
 all: fpsvc subdirs
